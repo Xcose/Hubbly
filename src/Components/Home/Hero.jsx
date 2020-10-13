@@ -25,7 +25,7 @@ function Hero() {
 								It's our business to make you have fun
 							</legend>
 							<h1 className="display-1 text-white heading font-weight-bold">
-								Hubbly bubbly
+								Hubbly
 							</h1>
 						</fieldset>
 						<Link to="/#about">
