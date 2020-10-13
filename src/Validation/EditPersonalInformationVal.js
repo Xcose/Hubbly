@@ -17,11 +17,7 @@ function EditPersonalInformationVal(values) {
 	}
 	if (!values.mobile) {
 		errors.mobile = "Mobile number is required!";
-	} else if (
-		!/(^0[87][23467]((\d{7})|( |-)((\d{3}))( |-)(\d{4})|( |-)(\d{7})))/.test(
-			values.mobile
-		)
-	) {
+	} else if (!/(^(\+27|0)[6-8][0-9]{8}$)/.test(values.mobile)) {
 		errors.mobile = "Mobile number is not valid!";
 	}
 	if (!values.email) {
