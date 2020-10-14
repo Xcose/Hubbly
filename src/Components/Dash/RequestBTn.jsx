@@ -13,9 +13,18 @@ import {
 	Badge,
 } from "reactstrap";
 
-const RequestBTn = () => {
-	const [modal, setModal] = useState(false);
+const RequestBTn = ({AddBooking}) => {
 
+	const initailBooking = {
+		eventDate: null,
+		startTime: null,
+		endTime: null,
+		numberOfHubds: 1,
+		flvs: null,
+		status: "pending"
+	}
+	const [modal, setModal] = useState(false);
+	const [booking, setbooking] = useState(initailBooking);
 	const [flavor, setFlavor] = useState("apple");
 	const [qty, setQty] = useState(1);
 	const [flavors, setFlavors] = useState([]);
@@ -32,21 +41,48 @@ const RequestBTn = () => {
 			if(flv.name === flavor)
 			{
 				found = true;
-				flv.amount = flv.amount + qty;
+				flv.amount = parseInt(flv.amount) + parseInt(qty);
 			}
 			return flv;
 		})
 		if (found)
 		{
 			setFlavors(updateFlavours);
+			UpdateBookingFlavours(updateFlavours);
 		}
 		else{
 			setFlavors([...flavors, { name: flavor, amount: qty }])
+			UpdateBookingFlavours([...flavors, { name: flavor, amount: qty }]);
 		}
 	};
 	const RemoveFlavour = (flvToRemove) => {
 		setFlavors(flavors.filter((flv) => flv.name !== flvToRemove));
 	};
+
+	const onChange= (e) => {
+		let updatedBooking = booking;
+		updatedBooking[e.target.name] = e.target.value;
+		setbooking(updatedBooking);
+	}
+
+	const UpdateBookingFlavours = (newFLavours) => {
+		let updatedBooking = booking;
+		updatedBooking.flvs = newFLavours;
+		setbooking(updatedBooking);
+	}
+
+	const onSubmit = () => {
+		AddBooking(booking);
+		toggle();
+		clear();
+	}
+
+	const clear = () => {
+		setbooking(initailBooking);
+		setFlavor("apple");
+		setQty(1);
+		setFlavors([]);
+	}
 
 	const toggle = () => setModal(!modal);
 	return (
@@ -62,9 +98,13 @@ const RequestBTn = () => {
 						<Input
 							type="date"
 							id=""
+							defaultValue={booking.eventDate}
+							onChange={(e) => {
+								onChange(e);
+							}}
 							className={classText(null)}
 							placeholder="Date"
-							name="date"
+							name="eventDate"
 						/>
 						{/* {validationErrors.username && (
 							<Tooltip placement="right" isOpen={true} target="LoginUsername">
@@ -77,9 +117,13 @@ const RequestBTn = () => {
 						<Input
 							type="time"
 							id=""
+							defaultValue={booking.startTime}
+							onChange={(e) => {
+								onChange(e);
+							}}
 							className={classText(null)}
 							placeholder="Start time"
-							name="date"
+							name="startTime"
 						/>
 					</FormGroup>
 					<FormGroup>
@@ -87,9 +131,13 @@ const RequestBTn = () => {
 						<Input
 							type="time"
 							id=""
+							defaultValue={booking.endTime}
+							onChange={(e) => {
+								onChange(e);
+							}}
 							className={classText(null)}
 							placeholder="End Time"
-							name="date"
+							name="endTime"
 						/>
 					</FormGroup>
 					<FormGroup>
@@ -97,10 +145,14 @@ const RequestBTn = () => {
 						<Input
 							type="number"
 							id=""
+							defaultValue={booking.numberOfHubds}
+							onChange={(e) => {
+								onChange(e);
+							}}
 							className={classText(null)}
 							defaultValue="1"
 							placeholder="Number of hubs"
-							name="date"
+							name="numberOfHubs"
 						/>
 					</FormGroup>
 					<InputGroup>
@@ -156,7 +208,7 @@ const RequestBTn = () => {
 					</div>
 				</ModalBody>
 				<ModalFooter>
-					<Button color="primary" onClick={toggle}>
+					<Button color="primary" onClick={onSubmit}>
 						Book
 					</Button>{" "}
 					<Button color="secondary" onClick={toggle}>
