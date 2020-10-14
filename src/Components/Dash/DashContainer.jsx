@@ -14,7 +14,7 @@ import DashNav from "./DashNav";
 import HomeTab from "./HomeTab";
 
 const DashContainer = ({ name }) => {
-	const [selectedTab, setSelectedTab] = useState("home");
+	const [selectedTab, setSelectedTab] = useState("booking");
 
 	const Tabclick = (tab) => {
 		if (selectedTab !== tab) setSelectedTab(tab);

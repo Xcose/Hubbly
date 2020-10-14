@@ -1,10 +1,12 @@
 import React from "react";
 import { Card, Button, CardTitle, CardText } from "reactstrap";
+import RequestBTn from "./RequestBTn";
 
 const BookingTab = () => {
 	return (
 		<div className="w-100 h-100 p-5">
-			<Button className="mb-5">Booking</Button>
+			{/* <Button className="mb-5">Booking</Button> */}
+			<RequestBTn />
 			<div className="row h-100">
 				<div className="col-12 col-lg-4 text-center mb-5">
 					<Card body>
