@@ -26,11 +26,11 @@ const DashContainer = ({ name }) => {
 				<DashNav />
 			</div>
 			<div className="row h-100">
-				<Col sm="12" lg="2" className="bg-secondary p-lg-5 p-4 text-center">
-					<p className="text-white">
+				<Col sm="12" lg="2" className="bg-secondary px-lg-5 px-4 text-center">
+					<p className="text-white pt-lg-5 pt-2">
 						Welcome <b>{name}</b>
 					</p>
-					<Nav pills className="d-flex justify-content-center">
+					<Nav pills className="d-flex justify-content-center pb-2">
 						<NavItem>
 							<NavLink
 								href="#"
