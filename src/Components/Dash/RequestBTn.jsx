@@ -11,19 +11,19 @@ import {
 	InputGroupAddon,
 	Label,
 	Badge,
+	FormFeedback,
 } from "reactstrap";
 import Validation from "../../Validation/BookingValidation";
 
-const RequestBTn = ({AddBooking}) => {
-
+const RequestBTn = ({ AddBooking }) => {
 	const initailBooking = {
 		eventDate: null,
 		startTime: null,
 		endTime: null,
 		numberOfHubds: null,
 		flvs: null,
-		status: "pending"
-	}
+		status: "pending",
+	};
 	const [modal, setModal] = useState(false);
 	const [booking, setbooking] = useState(initailBooking);
 	const [flavor, setFlavor] = useState("apple");
@@ -31,29 +31,24 @@ const RequestBTn = ({AddBooking}) => {
 	const [flavors, setFlavors] = useState([]);
 	const [errors, setErrors] = useState({});
 
-	const classText = (error) => {
-		return `rounded-0 border-top-0 border-left-0 border-right-0 ${
-			error ? "is-invalid" : ""
-		}`;
+	const classText = () => {
+		return "rounded-0 border-top-0 border-left-0 border-right-0";
 	};
 
 	const AddFlavour = () => {
 		let found = false;
-		let updateFlavours = flavors.map(flv =>{
-			if(flv.name === flavor)
-			{
+		let updateFlavours = flavors.map((flv) => {
+			if (flv.name === flavor) {
 				found = true;
 				flv.amount = parseInt(flv.amount) + parseInt(qty);
 			}
 			return flv;
-		})
-		if (found)
-		{
+		});
+		if (found) {
 			setFlavors(updateFlavours);
 			UpdateBookingFlavours(updateFlavours);
-		}
-		else{
-			setFlavors([...flavors, { name: flavor, amount: qty }])
+		} else {
+			setFlavors([...flavors, { name: flavor, amount: qty }]);
 			UpdateBookingFlavours([...flavors, { name: flavor, amount: qty }]);
 		}
 	};
@@ -61,17 +56,17 @@ const RequestBTn = ({AddBooking}) => {
 		setFlavors(flavors.filter((flv) => flv.name !== flvToRemove));
 	};
 
-	const onChange= (e) => {
+	const onChange = (e) => {
 		let updatedBooking = booking;
 		updatedBooking[e.target.name] = e.target.value;
 		setbooking(updatedBooking);
-	}
+	};
 
 	const UpdateBookingFlavours = (newFLavours) => {
 		let updatedBooking = booking;
 		updatedBooking.flvs = newFLavours;
 		setbooking(updatedBooking);
-	}
+	};
 
 	const validate = () => {
 		const validationErrors = Validation(booking);
@@ -81,20 +76,20 @@ const RequestBTn = ({AddBooking}) => {
 		} else {
 			setErrors(validationErrors);
 		}
-	}
+	};
 
 	const onSubmit = () => {
 		AddBooking(booking);
 		toggle();
 		clear();
-	}
+	};
 
 	const clear = () => {
 		setbooking(initailBooking);
 		setFlavor("apple");
 		setQty(1);
 		setFlavors([]);
-	}
+	};
 
 	const toggle = () => setModal(!modal);
 	return (
@@ -108,69 +103,73 @@ const RequestBTn = ({AddBooking}) => {
 					<FormGroup>
 						<Label>Date of event</Label>
 						<Input
+							{...(errors.eventDate ? { invalid: true } : {})}
 							type="date"
 							id=""
 							defaultValue={booking.eventDate}
 							onChange={(e) => {
 								onChange(e);
 							}}
-							className={classText(errors.eventDate)}
+							className={classText()}
 							placeholder="Date"
 							name="eventDate"
 						/>
-						{/* {validationErrors.username && (
-							<Tooltip placement="right" isOpen={true} target="LoginUsername">
-								{validationErrors.username}
-							</Tooltip>
-						)} */}
+						<FormFeedback>{errors.eventDate}</FormFeedback>
 					</FormGroup>
 					<FormGroup>
 						<Label>Start time</Label>
 						<Input
+							{...(errors.startTime ? { invalid: true } : {})}
 							type="time"
 							id=""
 							defaultValue={booking.startTime}
 							onChange={(e) => {
 								onChange(e);
 							}}
-							className={classText(errors.startTime)}
+							className={classText()}
 							placeholder="Start time"
 							name="startTime"
 						/>
+						<FormFeedback>{errors.startTime}</FormFeedback>
 					</FormGroup>
 					<FormGroup>
 						<Label>End time</Label>
 						<Input
+							{...(errors.endTime ? { invalid: true } : {})}
 							type="time"
 							id=""
 							defaultValue={booking.endTime}
 							onChange={(e) => {
 								onChange(e);
 							}}
-							className={classText(errors.endTime)}
+							className={classText()}
 							placeholder="End Time"
 							name="endTime"
 						/>
+						<FormFeedback>{errors.endTime}</FormFeedback>
 					</FormGroup>
 					<FormGroup>
 						<Label>Number of hubs</Label>
 						<Input
+							{...(errors.numberOfHubds ? { invalid: true } : {})}
 							type="number"
 							id=""
 							defaultValue={booking.numberOfHubds}
 							onChange={(e) => {
 								onChange(e);
 							}}
-							className={classText(errors.numberOfHubds)}
+							className={classText()}
 							placeholder="Number of hubs"
 							name="numberOfHubs"
 						/>
+						<FormFeedback>{errors.numberOfHubds}</FormFeedback>
 					</FormGroup>
 					<InputGroup>
 						<Input
+							{...(errors.flvs ? { invalid: true } : {})}
 							type="select"
 							id=""
-							className={classText(errors.flvs)}
+							className={classText()}
 							name="Flavour"
 							onChange={(e) => {
 								setFlavor(e.target.value);
@@ -182,6 +181,7 @@ const RequestBTn = ({AddBooking}) => {
 							<option value="Mango">Mango</option>
 						</Input>
 						<Input
+							{...(errors.flvs ? { invalid: true } : {})}
 							type="number"
 							id=""
 							placeholder="Quantity"
@@ -189,7 +189,7 @@ const RequestBTn = ({AddBooking}) => {
 							onChange={(e) => {
 								setQty(e.target.value);
 							}}
-							className={classText(errors.flvs)}
+							className={classText()}
 							name="qty"
 						/>
 
@@ -202,6 +202,7 @@ const RequestBTn = ({AddBooking}) => {
 								Add
 							</Button>
 						</InputGroupAddon>
+						<FormFeedback>{errors.flvs}</FormFeedback>
 					</InputGroup>
 					<div>
 						{flavors.map((flv) => (
