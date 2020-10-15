@@ -13,6 +13,7 @@ import "react-notifications-component/dist/theme.css";
 
 import logo from "./logo.svg";
 import "./App.css";
+import { Button } from "reactstrap";
 
 function App() {
 	return (
@@ -39,7 +40,22 @@ function App() {
 						<Route path="/signup" exact component={SignUp}></Route>
 						<Route path="/forgot" exact component={ForgotPassword}></Route> */}
 						</Switch>
+						<Button
+							style={{
+								position: "fixed",
+								bottom: 20,
+								right: 20,
+								zIndex: 999999,
+							}}
+							className="rounded-circle"
+							onClick={() => {
+								window.scroll({ top: 0, behavior: "smooth" });
+							}}
+						>
+							^
+						</Button>
 					</div>
+
 					<Footer />
 				</div>
 			</Router>
