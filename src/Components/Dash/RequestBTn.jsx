@@ -12,6 +12,7 @@ import {
 	Label,
 	Badge,
 } from "reactstrap";
+import Validation from "../../Validation/BookingValidation";
 
 const RequestBTn = ({AddBooking}) => {
 
@@ -19,7 +20,7 @@ const RequestBTn = ({AddBooking}) => {
 		eventDate: null,
 		startTime: null,
 		endTime: null,
-		numberOfHubds: 1,
+		numberOfHubds: null,
 		flvs: null,
 		status: "pending"
 	}
@@ -28,6 +29,7 @@ const RequestBTn = ({AddBooking}) => {
 	const [flavor, setFlavor] = useState("apple");
 	const [qty, setQty] = useState(1);
 	const [flavors, setFlavors] = useState([]);
+	const [errors, setErrors] = useState({});
 
 	const classText = (error) => {
 		return `rounded-0 border-top-0 border-left-0 border-right-0 ${
@@ -71,6 +73,16 @@ const RequestBTn = ({AddBooking}) => {
 		setbooking(updatedBooking);
 	}
 
+	const validate = () => {
+		const validationErrors = Validation(booking);
+
+		if (Object.keys(validationErrors).length === 0) {
+			onSubmit();
+		} else {
+			setErrors(validationErrors);
+		}
+	}
+
 	const onSubmit = () => {
 		AddBooking(booking);
 		toggle();
@@ -102,7 +114,7 @@ const RequestBTn = ({AddBooking}) => {
 							onChange={(e) => {
 								onChange(e);
 							}}
-							className={classText(null)}
+							className={classText(errors.eventDate)}
 							placeholder="Date"
 							name="eventDate"
 						/>
@@ -121,7 +133,7 @@ const RequestBTn = ({AddBooking}) => {
 							onChange={(e) => {
 								onChange(e);
 							}}
-							className={classText(null)}
+							className={classText(errors.startTime)}
 							placeholder="Start time"
 							name="startTime"
 						/>
@@ -135,7 +147,7 @@ const RequestBTn = ({AddBooking}) => {
 							onChange={(e) => {
 								onChange(e);
 							}}
-							className={classText(null)}
+							className={classText(errors.endTime)}
 							placeholder="End Time"
 							name="endTime"
 						/>
@@ -149,8 +161,7 @@ const RequestBTn = ({AddBooking}) => {
 							onChange={(e) => {
 								onChange(e);
 							}}
-							className={classText(null)}
-							defaultValue="1"
+							className={classText(errors.numberOfHubds)}
 							placeholder="Number of hubs"
 							name="numberOfHubs"
 						/>
@@ -159,7 +170,7 @@ const RequestBTn = ({AddBooking}) => {
 						<Input
 							type="select"
 							id=""
-							className={classText(null)}
+							className={classText(errors.flvs)}
 							name="Flavour"
 							onChange={(e) => {
 								setFlavor(e.target.value);
@@ -178,7 +189,7 @@ const RequestBTn = ({AddBooking}) => {
 							onChange={(e) => {
 								setQty(e.target.value);
 							}}
-							className={classText(null)}
+							className={classText(errors.flvs)}
 							name="qty"
 						/>
 
@@ -208,7 +219,7 @@ const RequestBTn = ({AddBooking}) => {
 					</div>
 				</ModalBody>
 				<ModalFooter>
-					<Button color="primary" onClick={onSubmit}>
+					<Button color="primary" onClick={validate}>
 						Book
 					</Button>{" "}
 					<Button color="secondary" onClick={toggle}>
