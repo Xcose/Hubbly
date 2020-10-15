@@ -10,9 +10,12 @@ const BookingValidation = (values) => {
     if (!values.endTime) {
 		errors.endTime = "End time is required!";
     }
-    if (!values.numberOfHubds) {
-		errors.numberOfHubds = "Number of hubs is required!";
+    if (!values.numberOfHubs) {
+		errors.numberOfHubs = "Number of hubs is required!";
     }
+    else if (values.numberOfHubs == 0) {
+      errors.numberOfHubs = "Number of hubs cannot be 0!";
+      }
     if (!values.flvs) {
 		errors.flvs = "Please add Flvours!";
     }

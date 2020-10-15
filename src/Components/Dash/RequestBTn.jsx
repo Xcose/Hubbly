@@ -20,7 +20,7 @@ const RequestBTn = ({ AddBooking }) => {
 		eventDate: null,
 		startTime: null,
 		endTime: null,
-		numberOfHubds: null,
+		numberOfHubs: null,
 		flvs: null,
 		status: "pending",
 	};
@@ -151,10 +151,10 @@ const RequestBTn = ({ AddBooking }) => {
 					<FormGroup>
 						<Label>Number of hubs</Label>
 						<Input
-							{...(errors.numberOfHubds ? { invalid: true } : {})}
+							{...(errors.numberOfHubs ? { invalid: true } : {})}
 							type="number"
 							id=""
-							defaultValue={booking.numberOfHubds}
+							defaultValue={booking.numberOfHubs}
 							onChange={(e) => {
 								onChange(e);
 							}}
@@ -162,7 +162,7 @@ const RequestBTn = ({ AddBooking }) => {
 							placeholder="Number of hubs"
 							name="numberOfHubs"
 						/>
-						<FormFeedback>{errors.numberOfHubds}</FormFeedback>
+						<FormFeedback>{errors.numberOfHubs}</FormFeedback>
 					</FormGroup>
 					<InputGroup>
 						<Input
