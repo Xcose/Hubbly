@@ -8,10 +8,12 @@ import {
 	Row,
 	TabContent,
 } from "reactstrap";
+
 import AccountTab from "./AccountTab";
 import BookingTab from "./BookingTab";
 import DashNav from "./DashNav";
 import HomeTab from "./HomeTab";
+import MapComponent from "./MapComponent";
 
 const DashContainer = ({ name }) => {
 	const [selectedTab, setSelectedTab] = useState("booking");
@@ -25,21 +27,15 @@ const DashContainer = ({ name }) => {
 			<div className="w-100">
 				<DashNav />
 			</div>
-			<div className="row h-100">
-				<Col sm="12" lg="2" className="bg-secondary px-lg-5 px-4 text-center">
-					<p className="text-white pt-lg-5 pt-2">
+			<div className="row h-100 px-5">
+				<Col sm="12" lg="6" className="bg-light">
+					<p className="pt-lg-5 pt-2 pb-5">
 						Welcome <b>{name}</b>
 					</p>
-					<Nav pills className="d-flex justify-content-center pb-2">
-						<NavItem>
-							<NavLink
-								href="#"
-								className={selectedTab === "home" ? "active" : null}
-								onClick={() => Tabclick("home")}
-							>
-								Home
-							</NavLink>
-						</NavItem>
+					<MapComponent />
+				</Col>
+				<Col sm="12" lg="6" className="px-5">
+					<Nav pills className="pb-5 pt-lg-5 pt-5">
 						<NavItem>
 							<NavLink
 								href="#"
@@ -59,19 +55,18 @@ const DashContainer = ({ name }) => {
 							</NavLink>
 						</NavItem>
 					</Nav>
-				</Col>
-				<Col sm="12" lg="10">
-					<TabContent activeTab={selectedTab} className="h-100">
-						<TabPane tabId="home" className="h-100">
-							<HomeTab />
-						</TabPane>
-						<TabPane tabId="booking">
-							<BookingTab />
-						</TabPane>
-						<TabPane tabId="account">
-							<AccountTab />
-						</TabPane>
-					</TabContent>
+					<Row>
+						<Col sm="12">
+							<TabContent activeTab={selectedTab} className="h-100">
+								<TabPane tabId="booking">
+									<BookingTab />
+								</TabPane>
+								<TabPane tabId="account">
+									<AccountTab />
+								</TabPane>
+							</TabContent>
+						</Col>
+					</Row>
 				</Col>
 			</div>
 		</div>

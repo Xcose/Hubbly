@@ -71,22 +71,26 @@ function ContactUs() {
 	};
 
 	return (
-		<div className="py-5 text-center" id="contactUs">
+		<div
+			className="pt-5 text-center"
+			id="contactUs"
+			style={{ height: "100vh" }}
+		>
 			<p className="display-4 my-5 font-weight-bold">GET IN TOUCH</p>
-			<div className="row justify-content-center">
+			<div className="row justify-content-around">
 				<div className="col-12 col-lg-5 d-flex justify-content-center align-items-center">
 					<div className="text-left">
-						<p className="font-italic">
+						<p className="font-italic my-5">
 							<FontAwesomeIcon icon={faMobile} /> 076 661 3279
 						</p>
-						<p className="font-italic">
+						<p className="font-italic my-5">
 							<FontAwesomeIcon icon={faEnvelope} /> email@domain.co.za
 						</p>
 					</div>
 				</div>
 				<div className="col-12 col-lg-5 p-5">
-					<fieldset className="border border-dark p-3">
-						<legend className="h3 mb-5">Talk to Us</legend>
+					<fieldset className="p-3">
+						{/* <legend className="h3 mb-5">Talk to Us</legend> */}
 						<form id="contact_form">
 							<FormGroup>
 								<Input

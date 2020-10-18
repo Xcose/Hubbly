@@ -8,85 +8,75 @@ import {
 	CardDeck,
 	CardSubtitle,
 	CardBody,
+	Media,
 } from "reactstrap";
 
-import testIMG from "../../Images/Idea.jpg";
+import John from "../../Images/happy.jpg";
+import Jane from "../../Images/woman.jpg";
 
 function Testimonials() {
 	return (
-		<div className="p-5 text-center" id="testimonal">
-			<p class="display-4 text-center my-5 font-weight-bold">Testimonials</p>
-			<p className=" lead text-justify m-lg-5">
-				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis
-				dolores corporis modi, est illo nesciunt quod quo ullam delectus eos
-				laudantium excepturi voluptas, facere asperiores consequuntur assumenda
-				velit in mollitia?
+		<div
+			className="p-5 text-center"
+			id="testimonal"
+			style={{ height: "100vh" }}
+		>
+			<p class="display-4 text-center my-5 font-weight-bold">
+				Who have we worked with?
 			</p>
-			<CardDeck className="mt-5">
-				<Card className="border-0">
-					<div className="d-flex justify-content-center text-center mx-auto">
-						<img
-							src={testIMG}
-							style={{ width: "50%" }}
-							className="rounded-circle z-depth-1 img-fluid"
-						/>
-					</div>
-					<CardBody>
-						<CardTitle className="h3 text-muted font-weight-bold mt-4">
-							John Doe
-						</CardTitle>
-						<CardSubtitle className="text-primary h4 font-weight-bold my-3">
-							Type of Event
-						</CardSubtitle>
-						<CardText className="text-center text-grey">
-							This card has supporting text below as a natural lead-in to
-							additional content.
-						</CardText>
-					</CardBody>
-				</Card>
-				<Card className="border-0">
-					<div className="d-flex justify-content-center text-center mx-auto">
-						<img
-							src={testIMG}
-							style={{ width: "50%" }}
-							className="rounded-circle z-depth-1 img-fluid"
-						/>
-					</div>
-					<CardBody>
-						<CardTitle className="h3 text-muted font-weight-bold mt-4">
-							John Doe
-						</CardTitle>
-						<CardSubtitle className="text-primary h4 font-weight-bold my-3">
-							Type of Event
-						</CardSubtitle>
-						<CardText className="text-center text-grey">
-							This card has supporting text below as a natural lead-in to
-							additional content.
-						</CardText>
-					</CardBody>
-				</Card>
-				<Card className="border-0">
-					<div className="d-flex justify-content-center text-center mx-auto">
-						<img
-							src={testIMG}
-							style={{ width: "50%" }}
-							className="rounded-circle z-depth-1 img-fluid"
-						/>
-					</div>
-					<CardBody>
-						<CardTitle className="h3 text-muted font-weight-bold mt-4">
-							John Doe
-						</CardTitle>
-						<CardSubtitle className="text-primary h4 font-weight-bold my-3">
-							Type of Event
-						</CardSubtitle>
-						<CardText className="text-center text-grey">
-							This card has supporting text below as a natural lead-in to
-							additional content.
-						</CardText>
-					</CardBody>
-				</Card>
-			</CardDeck>
+			<Media className="row my-5 m-lg-5">
+				<Media left href="#" className="col-12 col-lg-2">
+					<Media
+						object
+						src={John}
+						alt="Generic placeholder image"
+						className="w-100 media-img"
+					/>
+				</Media>
+				<Media body className="col-12 col-lg-10 text-lg-left">
+					<Media heading>John Doe</Media>
+					<p className="text-muted">
+						"Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
+						scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum
+						in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
+						nisi vulputate fringilla. Donec lacinia congue felis in faucibus."
+					</p>
+				</Media>
+			</Media>
+			<Media className="row my-5 m-lg-5">
+				<Media left className="col-12 col-lg-2">
+					<Media
+						object
+						src={Jane}
+						alt="Generic placeholder image"
+						className="w-100"
+					/>
+				</Media>
+				<Media body className="col-12 col-lg-10 text-lg-left">
+					<Media heading>Jane Doe</Media>
+					Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
+					scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in
+					vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi
+					vulputate fringilla. Donec lacinia congue felis in faucibus.
+				</Media>
+			</Media>
+			<Media className="row my-5 m-lg-5">
+				<Media left href="#" className="col-12 col-lg-2">
+					<Media
+						object
+						src={John}
+						alt="Generic placeholder image"
+						className="w-100"
+					/>
+				</Media>
+				<Media body className="col-12 col-lg-10 text-lg-left">
+					<Media heading>John Doe</Media>
+					Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
+					scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in
+					vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi
+					vulputate fringilla. Donec lacinia congue felis in faucibus.
+				</Media>
+			</Media>
 		</div>
 	);
 }

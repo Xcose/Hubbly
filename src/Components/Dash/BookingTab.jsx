@@ -10,19 +10,15 @@ const BookingTab = () => {
 	};
 
 	return (
-		<div className="w-100 h-100 p-5">
-			{/* <Button className="mb-5">Booking</Button> */}
+		<div className="w-100 h-100">
 			<RequestBTn AddBooking={AddBooking} />
-			<div className="row h-100">
+			<div className="row h-100 w-100 text-center bg-dark">
 				{bookings.map((booking) => {
 					return (
-						<div className="col-12 col-lg-4 text-center mb-5">
-							<Card body>
+						<div className="text-center mb-5 bg-dark w-100">
+							<Card body className="w-100">
 								<CardTitle className="w-100 text-left mb-2">
 									status: {booking.status}
-									{/* <small className="float-right font-weight-bold">
-										{booking.eventDate}
-									</small> */}
 								</CardTitle>
 								<CardText>
 									<h3>
@@ -32,7 +28,6 @@ const BookingTab = () => {
 										Time: {booking.startTime} - {booking.endTime}
 									</p>
 									<p>Number of Hubs: {booking.numberOfHubs} @ R 20.00 p/h</p>
-									{/* <p className="lead">Flavours:</p> */}
 									<table className="table table-striped">
 										<thead className="font-weight-bold">
 											<tr>
