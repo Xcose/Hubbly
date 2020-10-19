@@ -71,11 +71,7 @@ function ContactUs() {
 	};
 
 	return (
-		<div
-			className="pt-5 text-center"
-			id="contactUs"
-			style={{ height: "100vh" }}
-		>
+		<div className="pt-5 text-center" id="contactUs">
 			<p className="display-4 my-5 font-weight-bold">GET IN TOUCH</p>
 			<div className="row justify-content-around">
 				<div className="col-12 col-lg-5 d-flex justify-content-center align-items-center">

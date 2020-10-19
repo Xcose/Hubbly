@@ -16,11 +16,7 @@ import Jane from "../../Images/woman.jpg";
 
 function Testimonials() {
 	return (
-		<div
-			className="p-5 text-center"
-			id="testimonal"
-			style={{ height: "100vh" }}
-		>
+		<div className="p-5 text-center" id="testimonal">
 			<p class="display-4 text-center my-5 font-weight-bold">
 				Who have we worked with?
 			</p>

@@ -30,3 +30,9 @@ body,
 .scroll-up-btn.active {
 	opacity: 1 !important;
 }
+.navbar.bg-transparent {
+	transition: background-color 0.2s ease-in;
+}
+.navbar.bg-dark {
+	transition: background-color 0.2s ease-in-out;
+}

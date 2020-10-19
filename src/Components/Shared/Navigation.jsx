@@ -20,12 +20,29 @@ import { HashLink } from "react-router-hash-link";
 const Navigation = ({ home }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const classText = `font-weight-bold ${home ? "text-white" : ""}`;
+	const [isDark, setIsDark] = useState(false);
 
 	const toggle = () => setIsOpen(!isOpen);
 
+	const changeNavbarBackground = () => {
+		console.log(window.outerHeight);
+		if (window.scrollY >= window.outerHeight) {
+			setIsDark(true);
+		} else {
+			setIsDark(false);
+		}
+	};
+
+	window.addEventListener("scroll", changeNavbarBackground);
+
 	return (
 		<div>
-			<Navbar color="transparent" light expand="md">
+			<Navbar
+				color={isDark ? "dark" : "transparent"}
+				light
+				expand="md"
+				fixed="top"
+			>
 				<Link to="/">
 					<NavbarBrand
 						className={`font-weight-bold d-flex align-items-center d-none d-lg-flex ${
