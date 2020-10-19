@@ -26,7 +26,7 @@ const Navigation = ({ home }) => {
 
 	const changeNavbarBackground = () => {
 		console.log(window.outerHeight);
-		if (window.scrollY >= window.outerHeight) {
+		if (window.scrollY >= window.outerHeight - 200) {
 			setIsDark(true);
 		} else {
 			setIsDark(false);
