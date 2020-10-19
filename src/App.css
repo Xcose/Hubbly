@@ -23,3 +23,10 @@ body,
 .media-img {
 	object-fit: cover !important;
 }
+.scroll-up-btn {
+	opacity: 0;
+	transition: opacity 5s ease-in-out;
+}
+.scroll-up-btn.active {
+	opacity: 1 !important;
+}
