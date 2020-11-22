@@ -22,6 +22,7 @@ body,
 }
 .media-img {
 	object-fit: cover !important;
+	clip-path: circle(30%);
 }
 .scroll-up-btn {
 	opacity: 0;

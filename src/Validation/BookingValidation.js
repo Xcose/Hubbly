@@ -13,7 +13,7 @@ const BookingValidation = (values) => {
     if (!values.numberOfHubs) {
 		errors.numberOfHubs = "Number of hubs is required!";
     }
-    else if (values.numberOfHubs == 0) {
+    else if (values.numberOfHubs === 0) {
       errors.numberOfHubs = "Number of hubs cannot be 0!";
       }
     if (!values.flvs) {

@@ -51,7 +51,7 @@ function ForgotPassword() {
 	return (
 		<div className="h-100">
 			<Navigation />
-			<div class="row justify-content-center h-100">
+			<div class="row justify-content-center align-items-center h-100">
 				<div className="col-12 col-lg-5">
 					<fieldset className="p-5">
 						<legend className="h2 text-white text-center font-weight-bold">

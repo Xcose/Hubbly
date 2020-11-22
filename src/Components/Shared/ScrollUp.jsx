@@ -1,4 +1,6 @@
 import { faHandMiddleFinger } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 import { Button } from "reactstrap";
 
@@ -23,7 +25,7 @@ const ScrollUp = () => {
 				window.scroll({ top: 0, behavior: "smooth" });
 			}}
 		>
-			^
+			<FontAwesomeIcon icon={faArrowUp} />
 		</Button>
 	);
 };

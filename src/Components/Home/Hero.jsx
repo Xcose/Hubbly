@@ -28,8 +28,8 @@ function Hero() {
 								Hubbly
 							</h1>
 							<Link to="/#about">
-								<Button className="text-center text-main btn-white border-0 mt-2 mt-lg-5">
-									Book a good time
+								<Button className="text-center btn-white border-0 mt-2 mt-lg-5">
+									<b>Book A Good Time</b>
 								</Button>
 							</Link>
 						</fieldset>

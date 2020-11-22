@@ -8,12 +8,16 @@ function About() {
 		<div className="p-5 text-center" id="about">
 			<p class="display-4 text-center my-5 font-weight-bold">Who are we?</p>
 			<div className="lead">
-				<p className="text-center m-lg-5">
-					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis
-					dolores corporis modi, est illo nesciunt quod quo ullam delectus eos
-					laudantium excepturi voluptas, facere asperiores consequuntur
-					assumenda velit in mollitia?
-				</p>
+				<Row className="justify-content-around">
+					<Col sm="12" lg="10">
+						<p className="text-center m-lg-5 text-muted">
+							Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+							Reiciendis dolores corporis modi, est illo nesciunt quod quo ullam
+							delectus eos laudantium excepturi voluptas, facere asperiores
+							consequuntur assumenda velit in mollitia?
+						</p>
+					</Col>
+				</Row>
 				<Row className="justify-content-around">
 					<Col sm="12" lg="8">
 						<img src={IMG} alt="Who are we" className="w-100" />

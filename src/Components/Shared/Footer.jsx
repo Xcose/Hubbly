@@ -10,7 +10,7 @@ function Footer() {
 			<div className="row pb-4 m-0">
 				<div className="col-12 col-lg-4">
 					<div className="mt-4 text-center">
-						<a href="mailto:info@sbwldata.co.za" className="text-white mx-5">
+						<a href="mailto:email@domain.co.za" className="text-white mx-5">
 							<FontAwesomeIcon icon={faEnvelope} />
 						</a>
 
@@ -19,7 +19,7 @@ function Footer() {
 						</abbr>
 
 						<a
-							href="https://www.facebook.com/Sbwl-Data-100692328403977/"
+							href="#"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="text-white mx-5"
@@ -30,7 +30,7 @@ function Footer() {
 				</div>
 				<div className="col-12 col-lg-4 m-0">
 					<div className="mt-4 text-center">
-						<Link to="/#contactUs">
+						<Link to="/#Events">
 							<b className="font-weight-bold text-white mx-2 border-right pr-3">
 								Events
 							</b>
@@ -41,9 +41,11 @@ function Footer() {
 						>
 							About
 						</a> */}
-						<a className="font-weight-bold text-white mx-2" href="#/Terms">
-							T's&amp;C's
-						</a>
+						<Link to="/#Terms">
+							<b className="font-weight-bold text-white mx-2 pr-3">
+								T's&amp;C's
+							</b>
+						</Link>
 					</div>
 				</div>
 				<div className="col-12 col-lg-4 text-center">

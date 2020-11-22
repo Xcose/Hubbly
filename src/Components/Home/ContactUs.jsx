@@ -25,7 +25,9 @@ function ContactUs() {
 	const toggle = () => setTooltipOpen(!tooltipOpen);
 
 	const classText = (error) => {
-		return `rounded-0 italic ${error ? "is-invalid" : ""}`;
+		return `rounded-0 italic input border-top-0 border-left-0 border-right-0 ${
+			error ? "is-invalid" : ""
+		}`;
 	};
 
 	const onChange = (e) => {
@@ -93,7 +95,7 @@ function ContactUs() {
 									type="text"
 									id="ContactName"
 									className={classText(validationErrors.name)}
-									value={contactData.name}
+									// value={}
 									onChange={(e) => {
 										onChange(e);
 									}}

@@ -8,6 +8,7 @@ import SignUp from "./Pages/SignUp";
 import Dash from "./Pages/Dash";
 import ForgotPassword from "./Pages/ForgotPassword";
 import Footer from "./Components/Shared/Footer";
+import NotFound from "./Pages/NotFound";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 
@@ -32,7 +33,8 @@ function App() {
 							<Route path="/" exact component={Home} />
 							<Route path="/signup" exact component={SignUp} />
 							<PrivateRoute exact path="/Dash" component={Dash} />
-							<Route path="/forgot" exact component={ForgotPassword}></Route>
+							<Route path="/forgot" exact component={ForgotPassword} />
+							<Route path="/*" exact component={NotFound} />
 							{/* <PrivateRoute exact path="/Dash" component={Dash} />
 						// <Route path="/" exact component={Home}></Route>
 						<Route path="/about" exact component={About}></Route>
