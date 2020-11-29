@@ -8,7 +8,6 @@ const ScrollUp = () => {
 	const [isVisible, setIsVisible] = useState(false);
 
 	const changeIsVisible = () => {
-		console.log(window.outerHeight);
 		if (window.scrollY >= window.outerHeight) {
 			setIsVisible(true);
 		} else {

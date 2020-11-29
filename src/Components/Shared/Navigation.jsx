@@ -25,7 +25,6 @@ const Navigation = ({ home }) => {
 	const toggle = () => setIsOpen(!isOpen);
 
 	const changeNavbarBackground = () => {
-		console.log(window.outerHeight);
 		if (window.scrollY >= window.outerHeight - 200) {
 			setIsDark(true);
 		} else {
