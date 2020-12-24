@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
 	Button,
 	Modal,
@@ -14,6 +14,9 @@ import {
 	FormFeedback,
 } from "reactstrap";
 import Validation from "../../Validation/BookingValidation";
+import Autocomplete from "react-google-autocomplete";
+import Geocode from "react-geocode";
+import { AuthContext } from "../../Auth/Auth";
 
 const RequestBTn = ({ AddBooking }) => {
 	const initailBooking = {
@@ -22,7 +25,10 @@ const RequestBTn = ({ AddBooking }) => {
 		endTime: null,
 		numberOfHubs: null,
 		flvs: null,
+		address: "18 The strand Street Swartkops",
+		coordinates: null,
 		status: "pending",
+		owner: null,
 	};
 	const [modal, setModal] = useState(false);
 	const [booking, setbooking] = useState(initailBooking);
@@ -30,6 +36,30 @@ const RequestBTn = ({ AddBooking }) => {
 	const [qty, setQty] = useState(1);
 	const [flavors, setFlavors] = useState([]);
 	const [errors, setErrors] = useState({});
+	const { currentUser } = useContext(AuthContext);
+
+	Geocode.setApiKey("AIzaSyD-97JHudLqEPqrmnIx3odvU-NuVgL7QOM");
+	Geocode.setLanguage("en");
+
+	useEffect(() => {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition((position) => {
+				Geocode.fromLatLng(
+					position.coords.latitude,
+					position.coords.longitude
+				).then(
+					(response) => {
+						const address = response.results[0].formatted_address;
+						console.log(response);
+						console.log("address");
+					},
+					(error) => {
+						console.error(error);
+					}
+				);
+			});
+		}
+	}, []);
 
 	const classText = () => {
 		return "rounded-0 border-top-0 border-left-0 border-right-0";
@@ -62,6 +92,16 @@ const RequestBTn = ({ AddBooking }) => {
 		setbooking(updatedBooking);
 	};
 
+	const onPlaceSelected = (place) => {
+		// let updatedBooking = booking;
+		// updatedBooking["address"] = place.formated_address;
+		// updatedBooking["coordinates"] = {
+		// 	lat: place.geomerty.location.lat(),
+		// 	lng: place.geomerty.location.lng(),
+		// };
+		// setbooking(updatedBooking);
+	};
+
 	const UpdateBookingFlavours = (newFLavours) => {
 		let updatedBooking = booking;
 		updatedBooking.flvs = newFLavours;
@@ -79,6 +119,10 @@ const RequestBTn = ({ AddBooking }) => {
 	};
 
 	const onSubmit = () => {
+		let updatedBooking = booking;
+		updatedBooking.owner = currentUser.uid;
+		setbooking(updatedBooking);
+
 		AddBooking(booking);
 		toggle();
 		clear();
@@ -98,7 +142,7 @@ const RequestBTn = ({ AddBooking }) => {
 				Book
 			</Button>
 			<Modal isOpen={modal} toggle={toggle}>
-				<ModalHeader toggle={toggle}>Modal title</ModalHeader>
+				{/* <ModalHeader toggle={toggle}>Modal title</ModalHeader> */}
 				<ModalBody>
 					<FormGroup>
 						<Label>Date of event</Label>
@@ -147,6 +191,20 @@ const RequestBTn = ({ AddBooking }) => {
 							name="endTime"
 						/>
 						<FormFeedback>{errors.endTime}</FormFeedback>
+					</FormGroup>
+					<FormGroup>
+						<Label>Address: </Label>
+						<Autocomplete
+							defaultValue={booking.address}
+							types={["(regions)"]}
+							onPlaceSelected={(place) => {
+								console.log(place);
+								onPlaceSelected();
+							}}
+							// className={classText()}
+							name="address"
+						/>
+						<FormFeedback>{errors.address}</FormFeedback>
 					</FormGroup>
 					<FormGroup>
 						<Label>Number of hubs</Label>

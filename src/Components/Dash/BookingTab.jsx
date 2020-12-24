@@ -1,12 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Card, Button, CardTitle, CardText } from "reactstrap";
 import RequestBTn from "./RequestBTn";
+import firebaseApp from "../../firebase";
+import { AuthContext } from "../../Auth/Auth";
+import { SuccessMessage, ErrorMessage } from "../Shared/Notifications";
 
 const BookingTab = () => {
 	const [bookings, setBookings] = useState([]);
+	const { currentUser } = useContext(AuthContext);
 
-	const AddBooking = (booking) => {
-		setBookings([...bookings, booking]);
+	useEffect(() => {
+		fetchData();
+	}, [currentUser]);
+
+	const AddBooking = async (booking) => {
+		try {
+			await firebaseApp.firestore().collection("orders").doc().set(booking);
+
+			setBookings([...bookings, booking]);
+
+			const message =
+				"Your order has been placed. Please see your email for more information";
+			SuccessMessage(message);
+		} catch (err) {
+			const message = err.message.toString();
+			ErrorMessage(message);
+		}
+	};
+
+	const fetchData = async () => {
+		try {
+			await firebaseApp
+				.firestore()
+				.collection("orders")
+				.where("owner", "==", currentUser.uid)
+				.onSnapshot((docs) => {
+					console.log();
+					docs.forEach((doc) => {
+						console.log(doc.data());
+						setBookings([...bookings, doc.data()]);
+					});
+				});
+		} catch (err) {
+			const message = err.message.toString();
+			ErrorMessage(message);
+		}
 	};
 
 	return (
