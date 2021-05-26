@@ -1,5 +1,5 @@
 import React from "react";
-import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { AuthProvider } from "./Auth/Auth";
 import PrivateRoute from "./Components/Shared/PrivateRoute";
