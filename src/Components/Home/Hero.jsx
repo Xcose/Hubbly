@@ -27,8 +27,11 @@ function Hero() {
 							<h1 className="display-1 text-white heading font-weight-bold px-0">
 								Hubbly
 							</h1>
-							<Link to="/#about" id="call-to-action">
-								<Button className="text-center btn-white border-0 mt-2 mt-lg-5">
+							<Link to="/#about">
+								<Button
+									className="text-center btn-white border-0 mt-2 mt-lg-5"
+									id="call-to-action"
+								>
 									<b>Book A Good Time</b>
 								</Button>
 							</Link>
