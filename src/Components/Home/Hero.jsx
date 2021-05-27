@@ -32,7 +32,7 @@ function Hero() {
 									className="text-center btn-white border-0 mt-2 mt-lg-5"
 									id="call-to-action"
 								>
-									<b>Book A Good Time</b>
+									Book A Good Time
 								</Button>
 							</Link>
 						</fieldset>
