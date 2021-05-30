@@ -161,9 +161,10 @@ function ContactUs() {
 							</FormGroup>
 						</form>
 						<Button
-							onClick={() => {
-								Validate();
-							}}
+							// onClick={() => {
+							// 	Validate();
+							// }}
+							type="submit"
 							className="btn-pebble text-main"
 							disabled={isLoading}
 							color="dark"
