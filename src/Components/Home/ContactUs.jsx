@@ -159,19 +159,19 @@ function ContactUs() {
 									</Tooltip>
 								)}
 							</FormGroup>
+							<Button
+								// onClick={() => {
+								// 	Validate();
+								// }}
+								type="submit"
+								className="btn-pebble text-main"
+								disabled={isLoading}
+								color="dark"
+								block
+							>
+								{isLoading ? <FontAwesomeIcon icon={faSpinner} spin /> : "Send"}
+							</Button>
 						</form>
-						<Button
-							// onClick={() => {
-							// 	Validate();
-							// }}
-							type="submit"
-							className="btn-pebble text-main"
-							disabled={isLoading}
-							color="dark"
-							block
-						>
-							{isLoading ? <FontAwesomeIcon icon={faSpinner} spin /> : "Send"}
-						</Button>
 					</fieldset>
 				</div>
 			</div>
