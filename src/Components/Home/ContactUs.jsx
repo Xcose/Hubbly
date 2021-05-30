@@ -6,8 +6,8 @@ import {
 	faEnvelope,
 	faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
-// import { SuccessMessage, ErrorMessage } from "../Shared/Notifications";
-// import Validation from "../../Validation/ContactUsValidation";
+import { SuccessMessage, ErrorMessage } from "../Shared/Notifications";
+import Validation from "../../Validation/ContactUsValidation";
 // import emailjs from "emailjs-com";
 
 function ContactUs() {
@@ -44,32 +44,32 @@ function ContactUs() {
 		setContactData(UpdatedContactData);
 	};
 
-	// const Validate = () => {
-	// 	const valErrors = Validation(contactData);
+	const Validate = () => {
+		const valErrors = Validation(contactData);
 
-	// 	if (Object.keys(valErrors).length === 0) {
-	// 		onSubmit();
-	// 	} else {
-	// 		setValidationErrors(valErrors);
-	// 	}
-	// };
+		if (Object.keys(valErrors).length === 0) {
+			onSubmit();
+		} else {
+			setValidationErrors(valErrors);
+		}
+	};
 
 	const onSubmit = async () => {
-		// setIsLoading(true);
-		// try {
-		// 	await emailjs.sendForm(
-		// 		"smtp_server",
-		// 		"template_DwxJnuMN",
-		// 		"#contact_form",
-		// 		"user_2NUlgzcOgBlL7JKjxQraj"
-		// 	);
-		// 	const message = "Message has been sent!";
-		// 	SuccessMessage(message);
-		// 	clear();
-		// } catch (err) {
-		// 	ErrorMessage(err.message);
-		// }
-		// setIsLoading(false);
+		setIsLoading(true);
+		try {
+			// await emailjs.sendForm(
+			// 	"smtp_server",
+			// 	"template_DwxJnuMN",
+			// 	"#contact_form",
+			// 	"user_2NUlgzcOgBlL7JKjxQraj"
+			// );
+			const message = "Message has been sent!";
+			SuccessMessage(message);
+			clear();
+		} catch (err) {
+			ErrorMessage(err.message);
+		}
+		setIsLoading(false);
 	};
 
 	return (
@@ -162,7 +162,7 @@ function ContactUs() {
 						</form>
 						<Button
 							onClick={() => {
-								// Validate();
+								Validate();
 							}}
 							className="btn-pebble text-main"
 							disabled={isLoading}
